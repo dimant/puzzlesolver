@@ -28,15 +28,23 @@ class PuzzlePiece
     {
         var offsets = rotations[rotation].ToList();
 
+        var minRow = offsets.Min(x => x.Item1);
+        var minCol = offsets.Min(x => x.Item2);
+
         var maxRow = offsets.Max(x => x.Item1);
         var maxCol = offsets.Max(x => x.Item2);
 
-        char[][] canvas = new char[maxRow + 1][];
+        var rows = maxRow - minRow + 1;
+        var cols = maxCol - minCol + 1;
 
-        for (int i = 0; i < maxRow + 1; i++)
+        var sb = new StringBuilder();
+
+        char[][] canvas = new char[rows][];
+
+        for (int i = 0; i < rows; i++)
         {
-            canvas[i] = new char[maxCol + 1];
-            for (int j = 0; j < maxCol + 1; j++)
+            canvas[i] = new char[cols];
+            for (int j = 0; j < cols; j++)
             {
                 canvas[i][j] = ' ';
             }
@@ -45,17 +53,16 @@ class PuzzlePiece
         for (int i = 0; i < offsets.Count; i++)
         {
             (int row, int col) = offsets[i];
-            canvas[row][col] = colors[rotation][i];
+
+            canvas[row - minRow][col - minCol] = colors[rotation][i];
         }
 
-        var builder = new StringBuilder();
-
-        foreach (var row in canvas)
+        foreach (var canvasRow in canvas)
         {
-            builder.AppendLine(new string(row));
+            sb.AppendLine(string.Join(" ", canvasRow));
         }
 
-        return builder.ToString();
+        return sb.ToString();
     }
 
     public PuzzlePiece(List<(int, int)[]> rotations, List<char[]> colors)
