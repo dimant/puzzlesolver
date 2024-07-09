@@ -29,7 +29,7 @@ class Solver
                 {
                     piece.Rotation = rotation;
 
-                    if (solution.TryAddPiece(pieces[index], row, col))
+                    if (solution.TryAddPiece(piece, row, col))
                     {
                         if (Solve(solution, pieces, index + 1))
                         {
