@@ -7,7 +7,7 @@ class PuzzlePiece
 
     private List<char[]> colors;
 
-    public int RotationCount => rotations.Count;
+    public int RotationsCount => rotations.Count;
 
     private int rotation = 0;
 

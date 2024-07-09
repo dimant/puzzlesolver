@@ -23,14 +23,21 @@ class Solver
         {
             for (int col = 0; col < 8; col++)
             {
-                if (solution.TryAddPiece(pieces[index], row, col))
-                {
-                    if (Solve(solution, pieces, index + 1))
-                    {
-                        return true;
-                    }
+                var piece = pieces[index];
 
-                    solution.RemoveLast();
+                for (int rotation = 0; rotation < piece.RotationsCount; rotation++)
+                {
+                    piece.Rotation = rotation;
+
+                    if (solution.TryAddPiece(pieces[index], row, col))
+                    {
+                        if (Solve(solution, pieces, index + 1))
+                        {
+                            return true;
+                        }
+
+                        solution.RemoveLast();
+                    }
                 }
             }
         }
