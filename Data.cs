@@ -99,5 +99,65 @@ class Data
             new char[] { 'B', 'W', 'B', 'W' },
             new char[] { 'W', 'B', 'W', 'B' },
         }));
+
+        PuzzlePieces.Add(new PuzzlePiece(new List<(int, int)[]>()
+        {
+            //   0 1
+            // 0 W B
+            // 1 B
+            new (int, int)[] { (0, 0), (0, 1), (1, 0) },
+
+            //   0 1
+            // 0 B W
+            // 1   B
+            new (int, int)[] { (0, 0), (0, 1), (1, 1) },
+
+            //   0 1
+            // 0  B
+            // 1 B W
+            new (int, int)[] { (0, 0), (0, 1), (-1, 1) },
+
+            //   0 1
+            // 0 B
+            // 1 B W
+            new (int, int)[] { (0, 0), (1, 0), (1, 1) },
+        }, new List<char[]>()
+        {
+            new char[] { 'W', 'B', 'B' },
+            new char[] { 'B', 'W', 'B' },
+            new char[] { 'B', 'W', 'B' },
+            new char[] { 'B', 'w', 'B' },
+        }));
+
+        PuzzlePieces.Add(new PuzzlePiece(new List<(int, int)[]>
+        {
+            //   0 1
+            // 0 W 
+            // 1 B W
+            // 2 W
+            new (int, int) [] { (0, 0), (1, 0), (2, 0), (1, 1) },
+
+            //   0 1 2
+            // 0 W B W
+            // 1   W
+            new (int, int) [] { (0, 0), (0, 1), (0, 2), (1, 1) },
+
+            //    0 1
+            // -1   W 
+            //  0 W B
+            //  1   W
+            new (int, int) [] { (0, 0), (-1, 1), (0, 1), (1, 1) },
+
+            //    0 1 2
+            // -1   W
+            //  0 W B W
+            new (int, int) [] { (0, 0), (0, 1), (0, 2), (-1, 1) },
+        }, new List<char[]>()
+        {
+            new char[] { 'W', 'B', 'W', 'W' },
+            new char[] { 'W', 'B', 'W', 'W' },
+            new char[] { 'W', 'W', 'B', 'W' },
+            new char[] { 'W', 'B', 'W', 'W' },
+        }));
     }
 }
